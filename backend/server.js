@@ -17,10 +17,15 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({
-    origin: process.env.FRONTEND_URL || "*",
-    credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://admission-management-system-alpha.vercel.app/"
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,6 +49,7 @@ app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/notifications", require("./routes/notificationRoutes"));
 app.use("/api/reports", require("./routes/reportRoutes"));
 app.use("/api/settings", require("./routes/settingsRoutes"));
+app.use("/api/dashboard", require("./routes/dashboardRoutes"));
 
 // 404 Handler
 app.use((req, res) => {
