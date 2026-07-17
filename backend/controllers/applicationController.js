@@ -331,17 +331,28 @@ exports.getApplicationStats = async (req, res, next) => {
 // @access  Private
 exports.downloadApplicationPDF = async (req, res, next) => {
   try {
-    const application = await Application.findById(req.params.id).populate('courseApplied');
+    console.log("===== PDF ROUTE HIT =====");
+    console.log("ID:", req.params.id);
+
+    const application = await Application.findById(req.params.id)
+      .populate("courseApplied");
+
+    console.log("Application:", application);
+
     if (!application) {
-      return res.status(404).json({ success: false, message: 'Application not found' });
+      console.log("Application not found");
+      return res.status(404).json({
+        success: false,
+        message: "Application not found",
+      });
     }
 
-    if (req.user.role === 'student' && application.studentId.toString() !== req.user._id.toString()) {
-      return res.status(403).json({ success: false, message: 'Not authorized' });
-    }
+    console.log("Generating PDF...");
 
     generateApplicationPDF(application, application.courseApplied, res);
+
   } catch (error) {
+    console.error("PDF ERROR:", error);
     next(error);
   }
 };
