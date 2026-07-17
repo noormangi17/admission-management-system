@@ -19,10 +19,10 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: [
+    origin: true
       // "http://localhost:5173",
-      "https://admission-management-system-chi.vercel.app"
-    ],
+      // "https://admission-management-system-chi.vercel.app"
+    ,
     credentials: true,
   })
 );
