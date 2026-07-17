@@ -3,6 +3,7 @@ import API from "../../services/api";
 import AdminLayout from "../../components/admin/AdminLayout";
 
 export default function ManageApplications() {
+    const BACKEND_URL = "https://admission-management-system-production-06f1.up.railway.app";
 
     const [applications, setApplications] = useState([]);
     const [filteredApplications, setFilteredApplications] = useState([]);
@@ -478,44 +479,43 @@ export default function ManageApplications() {
 
                             <div className="grid md:grid-cols-2 gap-4">
 
-                                <a
-                                    href={`http://localhost:5000${selectedApplication.documents?.profilePhoto}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="border rounded-lg p-3 hover:bg-gray-100"
-                                >
-                                    📷 Profile Photo
-                                </a>
+    <a
+        href={`${BACKEND_URL}${selectedApplication.documents?.profilePhoto}`}
+        target="_blank"
+        rel="noreferrer"
+        className="border rounded-lg p-3 hover:bg-gray-100"
+    >
+        📷 Profile Photo
+    </a>
 
-                                <a
-                                    href={`http://localhost:5000${selectedApplication.documents?.marksheet10}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="border rounded-lg p-3 hover:bg-gray-100"
-                                >
-                                    📄 10th Marksheet
-                                </a>
+    <a
+        href={`${BACKEND_URL}${selectedApplication.documents?.marksheet10}`}
+        target="_blank"
+        rel="noreferrer"
+        className="border rounded-lg p-3 hover:bg-gray-100"
+    >
+        📄 10th Marksheet
+    </a>
 
-                                <a
-                                    href={`http://localhost:5000${selectedApplication.documents?.marksheet12}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="border rounded-lg p-3 hover:bg-gray-100"
-                                >
-                                    📄 12th Marksheet
-                                </a>
+    <a
+        href={`${BACKEND_URL}${selectedApplication.documents?.marksheet12}`}
+        target="_blank"
+        rel="noreferrer"
+        className="border rounded-lg p-3 hover:bg-gray-100"
+    >
+        📄 12th Marksheet
+    </a>
 
-                                <a
-                                    href={`http://localhost:5000${selectedApplication.documents?.idProof}`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="border rounded-lg p-3 hover:bg-gray-100"
-                                >
-                                    🪪 ID Proof
-                                </a>
+    <a
+        href={`${BACKEND_URL}${selectedApplication.documents?.idProof}`}
+        target="_blank"
+        rel="noreferrer"
+        className="border rounded-lg p-3 hover:bg-gray-100"
+    >
+        🪪 ID Proof
+    </a>
 
-                            </div>
-
+</div>
                         </div>
                         {/* Footer */}
 
