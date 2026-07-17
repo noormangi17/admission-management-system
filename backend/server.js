@@ -21,7 +21,7 @@ app.use(
   cors({
     origin: [
       // "http://localhost:5173",
-      "https://admission-management-system-chi.vercel.app/"
+      "https://admission-management-system-chi.vercel.app"
     ],
     credentials: true,
   })
