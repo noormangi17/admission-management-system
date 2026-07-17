@@ -20,7 +20,7 @@ connectDB();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
+      // "http://localhost:5173",
       "https://admission-management-system-chi.vercel.app/"
     ],
     credentials: true,
