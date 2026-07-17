@@ -3,7 +3,8 @@ import API from "../../services/api";
 import AdminLayout from "../../components/admin/AdminLayout";
 
 export default function ManageApplications() {
-    const BACKEND_URL = "https://admission-management-system-production-06f1.up.railway.app";
+    // const BACKEND_URL = "https://admission-management-system-production-06f1.up.railway.app";
+    const BACKEND_URL="http://localhost:5000";
 
     const [applications, setApplications] = useState([]);
     const [filteredApplications, setFilteredApplications] = useState([]);
