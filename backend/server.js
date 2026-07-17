@@ -17,15 +17,10 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(
-  cors({
-    origin: true
-      // "http://localhost:5173",
-      // "https://admission-management-system-chi.vercel.app"
-    ,
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: "https://admission-management-system-chi.vercel.app",
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
