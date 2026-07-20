@@ -92,6 +92,28 @@ exports.getMe = async (req, res, next) => {
   }
 };
 
+// @desc    Update logged-in user's profile
+// @route   PUT /api/auth/profile
+// @access  Private
+exports.updateProfile = async (req, res, next) => {
+  try {
+    const { name, phone, address } = req.body;
+
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).json({ success: false, message: 'User not found' });
+
+    if (name) user.name = name;
+    if (phone) user.phone = phone;
+    if (address) user.address = address;
+
+    await user.save();
+
+    res.status(200).json({ success: true, user: { id: user._id, name: user.name, email: user.email, role: user.role, phone: user.phone, address: user.address } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // @desc    Forgot password - sends reset token via email
 // @route   POST /api/auth/forgot-password
 // @access  Public

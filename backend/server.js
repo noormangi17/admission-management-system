@@ -17,9 +17,20 @@ const app = express();
 connectDB();
 
 // Middleware
+const allowedOrigins = [];
+if (process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL);
+// common local dev ports used by Vite / React
+allowedOrigins.push("http://localhost:5173", "http://localhost:3000", "http://localhost:5174");
+
 app.use(cors({
-  origin: "https://admission-management-system-chi.vercel.app",
-  credentials: true
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            return callback(null, true);
+        }
+        return callback(new Error("CORS policy: This origin is not allowed."));
+    },
+    credentials: true,
 }));
 
 app.use(express.json());

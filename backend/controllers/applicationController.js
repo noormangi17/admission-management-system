@@ -46,12 +46,27 @@ exports.createApplication = async (req, res, next) => {
     });
 
     // Notify admin panel (create notifications for superadmin/officer would need a query;
-    // here we notify the student and log the submission)
+    // Notify the student about submission
     await Notification.create({
       userId: req.user._id,
       message: `Your application ${application.applicationId} has been submitted successfully.`,
       type: 'application_submitted',
     });
+
+    // Notify all admin users (superadmin/officer) about new submission
+    try {
+      const admins = await require('../models/User').find({ role: { $in: ['superadmin', 'officer'] } });
+      const adminNotifications = admins.map((admin) => ({
+        userId: admin._id,
+        message: `New application ${application.applicationId} submitted by ${application.personalInfo.fullName}`,
+        type: 'system',
+      }));
+      if (adminNotifications.length) {
+        await Notification.insertMany(adminNotifications);
+      }
+    } catch (e) {
+      console.error('Admin notification error:', e.message);
+    }
 
     sendEmail({
       to: email,

@@ -2,6 +2,7 @@ import Navbar from "../../components/Student/StudentNavbar";
 import Footer from "../../components/Student/StudentFooter";
 import hero from "../../assets/hero.jpg";
 import Stats from "../../components/common/Stats";
+import Notifications from "../../components/common/Notifications";
 import WhyChooseUs from "../../components/common/WhyChooseUs";
 import ContactSection from "../../components/ContactSection";
 function Home() {
@@ -9,7 +10,7 @@ function Home() {
     <>
       <Navbar />
 
-      <section className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 min-h-screen flex items-center">
+      <section id="home" className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 min-h-screen flex items-center">
 
         <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
 
@@ -61,6 +62,7 @@ function Home() {
 
       </section>
     <Stats />
+    <Notifications />
     <WhyChooseUs />
     <ContactSection />
       <Footer />
