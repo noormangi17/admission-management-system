@@ -18,9 +18,15 @@ connectDB();
 
 // Middleware
 const allowedOrigins = [];
+// Support a single FRONTEND_URL or comma-separated FRONTEND_URLS in env
 if (process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL);
+if (process.env.FRONTEND_URLS) {
+    process.env.FRONTEND_URLS.split(',').map(s => s.trim()).filter(Boolean).forEach(u => allowedOrigins.push(u));
+}
 // common local dev ports used by Vite / React
 allowedOrigins.push("http://localhost:5173", "http://localhost:3000", "http://localhost:5174");
+
+console.log('Allowed CORS origins:', allowedOrigins);
 
 app.use(cors({
     origin: function (origin, callback) {
