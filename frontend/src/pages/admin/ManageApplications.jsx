@@ -3,8 +3,7 @@ import API from "../../services/api";
 import AdminLayout from "../../components/admin/AdminLayout";
 
 export default function ManageApplications() {
-    const BACKEND_URL = "https://admission-management-system-production-61f1.up.railway.app";
-    // const BACKEND_URL="http://localhost:5000";
+    const BACKEND_URL = const BACKEND_URL = import.meta.env.VITE_API_URL;
 
     const [applications, setApplications] = useState([]);
     const [filteredApplications, setFilteredApplications] = useState([]);
