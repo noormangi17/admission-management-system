@@ -44,6 +44,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Static Upload Folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// Also serve uploads when frontend or proxy prefixes API with /api
+app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Health Route
 app.get("/", (req, res) => {
