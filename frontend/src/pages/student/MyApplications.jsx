@@ -3,6 +3,7 @@ import axios from "axios";
 import StudentLayout from "../../components/Student/StudentLayout";
 import { useAuth } from "../../context/AuthContext";
 import API from "../../services/api";
+ const BACKEND_URL  = import.meta.env.VITE_API_URL;
 
 export default function MyApplications() {
   const { token } = useAuth();
@@ -326,7 +327,7 @@ export default function MyApplications() {
 
           {selectedApplication.documents.profilePhoto && (
             <a
-              href={`http://localhost:5000${selectedApplication.documents.profilePhoto}`}
+              href={`${BACKEND_URL}${selectedApplication.documents.profilePhoto}`}
               target="_blank"
               rel="noreferrer"
               className="text-blue-600 hover:underline"
@@ -337,7 +338,7 @@ export default function MyApplications() {
 
           {selectedApplication.documents.marksheet10 && (
             <a
-              href={`http://localhost:5000${selectedApplication.documents.marksheet10}`}
+              href={`${BACKEND_URL}${selectedApplication.documents.marksheet10}`}
               target="_blank"
               rel="noreferrer"
               className="text-blue-600 hover:underline"
@@ -348,7 +349,7 @@ export default function MyApplications() {
 
           {selectedApplication.documents.marksheet12 && (
             <a
-              href={`http://localhost:5000${selectedApplication.documents.marksheet12}`}
+              href={`${BACKEND_URL}${selectedApplication.documents.marksheet12}`}
               target="_blank"
               rel="noreferrer"
               className="text-blue-600 hover:underline"
@@ -359,7 +360,7 @@ export default function MyApplications() {
 
           {selectedApplication.documents.idProof && (
             <a
-              href={`http://localhost:5000${selectedApplication.documents.idProof}`}
+              href={`${BACKEND_URL}${selectedApplication.documents.idProof}`}
               target="_blank"
               rel="noreferrer"
               className="text-blue-600 hover:underline"
