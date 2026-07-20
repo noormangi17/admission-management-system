@@ -3,7 +3,8 @@ import API from "../../services/api";
 import AdminLayout from "../../components/admin/AdminLayout";
 
 export default function ManageApplications() {
-    const BACKEND_URL  = import.meta.env.VITE_API_URL;
+    const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 
     const [applications, setApplications] = useState([]);
     const [filteredApplications, setFilteredApplications] = useState([]);

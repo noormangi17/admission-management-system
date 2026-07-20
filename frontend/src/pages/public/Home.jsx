@@ -3,6 +3,7 @@ import Footer from "../../components/Student/StudentFooter";
 import hero from "../../assets/hero.jpg";
 import Stats from "../../components/common/Stats";
 import WhyChooseUs from "../../components/common/WhyChooseUs";
+import ContactSection from "../../components/ContactSection";
 function Home() {
   return (
     <>
@@ -61,6 +62,7 @@ function Home() {
       </section>
     <Stats />
     <WhyChooseUs />
+    <ContactSection />
       <Footer />
     </>
   );

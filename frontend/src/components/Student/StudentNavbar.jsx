@@ -24,8 +24,8 @@ function Navbar() {
           </Link>
 
           <Link to="/contact" className="hover:text-yellow-300">
-            Contact
-          </Link>
+  Contact
+</Link>
 
         </div>
 
