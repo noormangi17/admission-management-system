@@ -3,8 +3,7 @@ import axios from "axios";
 import StudentLayout from "../../components/Student/StudentLayout";
 import { useAuth } from "../../context/AuthContext";
 import API from "../../services/api";
- const BACKEND_URL  = import.meta.env.VITE_API_URL;
-
+ const BACKEND_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/api\/?$/, "");
 export default function MyApplications() {
   const { token } = useAuth();
   
